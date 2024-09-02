@@ -15,6 +15,7 @@ with st.sidebar:
         st.success('API key correta!', icon='✅')
         replicate_api = st.secrets['REPLICATE_API_TOKEN']
         print(os.environ.get('REPLICATE_API_TOKEN'))
+        print('REPLICATE_API_TOKEN')
     else:
         replicate_api = st.text_input('Replicate API token:', type='password')
         if not (replicate_api.startswith('r8_') and len(replicate_api)==40):
@@ -36,6 +37,7 @@ for message in st.session_state.messages:
 def clear_chat_history():
     st.session_state.messages = [{"role": "Assistant", "content": "Como você está se sentindo hoje??"}]
 st.sidebar.button('Limpar chat', on_click=clear_chat_history)
+print('REPLICATE_API_TOKEN')
 
 # Fução para gerar a resposta
 def generate_llama2_response(prompt_input):
